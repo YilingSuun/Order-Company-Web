@@ -1,0 +1,76 @@
+//- partially use https://html-to-pug.com/
+extends layout
+
+block head
+  script(src="/js/update.js", defer)
+
+block content
+  - const lockedStatuses = ['Shipped', 'Delivered', 'Cancelled'];
+  section.title
+    h1 Order Tracking - ##{order.id}
+  .tracking-wrap
+    #orderTracking.details-box(
+      data-id=order.id,
+      data-status=order.status,
+      data-order-date=order.order_date,
+      data-ship-delay="3"
+    )
+      p
+        b Status:
+        |  
+        span#statusText= order.status
+
+      p
+        b Time to Shipment:
+        |  
+        span#timeToShip(style="display:inline-block; text-align:left;")
+
+      p
+        b From:
+        | #{order.from}
+
+      p
+        b Address:
+        br
+        | #{order.address}
+
+      p
+        b Product:
+        | #{order.product}
+
+      p
+        b Cost:
+        | #{typesetDollars(order.cost)}
+
+      p
+        b Notes:
+        br
+        | #{order.notes}
+
+    if !lockedStatuses.includes(order.status)
+      #actions.actions
+        button#cancelBtn.btn.btn-outline(type="button") Cancel Order
+        button#toggleUpdate.btn.btn-outline(type="button") Update Shipping
+
+      #msg.msg(aria-live="polite")
+
+      form#updateForm.update-box(method="post", action="/update_shipping", style="display:none;")
+        input(type="hidden", name="id", value=order.id)
+        .row
+          .radios
+            input#flat-rate(type="radio", name="shipping", value="Flat Rate", required)
+            label(for="flat-rate") Flat Rate
+
+            input#ground(type="radio", name="shipping", value="Ground")
+            label(for="ground") Ground
+
+            input#expedited(type="radio", name="shipping", value="Expedited")
+            label(for="expedited") Expedited
+        .row
+          label Address
+          br
+          textarea(name="address", required, rows="4", cols="40")= order.address
+        .actions
+          button.btn(type="submit") Save
+
+  a(href="/admin/orders") Back to Orders

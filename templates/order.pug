@@ -1,0 +1,44 @@
+//- Partically converted from HTML to Pug using https://html-to-pug.com/
+extends layout
+
+block head
+  script(src="/js/order.js", defer)
+
+block content
+  h1.title Place Your Order
+  .order-page
+    form#orderForm
+      label(for="name") Buyer name:
+      input#name(type="text", name="name", required)
+      br
+      label(for="address") Address:
+      textarea#address(name="address", required)
+      #orderResult.msg(aria-live="polite")
+      label(for="productSelect") Product:
+      select#productSelect(name="product", required)
+        option(value="") -- select a product --
+        each p in products
+          option(value=p)= p
+      #quantityWrap(style="display:none;")
+        label(for="quantityInput") Quantity:
+        input#quantityInput(type="number", name="quantity", min="1", value="1")
+      div
+        | Shipping:
+        label(for="flat") Flat Rate
+        input#flat(type="radio", name="shipping", value="Flat Rate", required)
+
+        label(for="ground") Ground
+        input#ground(type="radio", name="shipping", value="Ground")
+
+        label(for="expedited") Expedited
+        input#expedited(type="radio", name="shipping", value="Expedited")
+      div
+        input#remember(type="checkbox", name="remember", checked=customerName && customerName.length > 0)
+        label(for="remember") Remember my Name
+      label(for="order_date") Order Date:
+      input#order_date(type="hidden", name="order_date")
+      div
+        | Total: 
+        span#totalCost $0.00
+      button#prefill.btn(type="button") Prefill
+      input.btn(type="submit", value="Place Order")

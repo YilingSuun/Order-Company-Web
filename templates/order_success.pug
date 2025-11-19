@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  .order-page
+    h1 Order Placed Successfully!
+    p Your order id is #{order.id}.
+    p
+      a(href=`/tracking/${order.id}`) Track your order

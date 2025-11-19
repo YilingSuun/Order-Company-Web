@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  h1 All Orders
+  form(method="get", action="/admin/orders")
+    | Search Buyer: 
+    input(type="text", name="query", value=query)
+    |  Status: 
+    select(name="status")
+      - const statuses = ['all', 'Placed', 'Shipped', 'Delivered', 'Cancelled'];
+      each s in statuses
+        if s === status
+          option(value=s, selected)= s
+        else
+          option(value=s)= s
+    input(type="submit", value="Search")
+
+  table.orders-table
+    tr
+      th ID
+      th From
+      th Status
+      th Product
+      th Cost
+    if orders.length === 0
+      tr
+        td(colspan="5") No orders found
+    else
+      each o in orders
+        tr
+          td
+            a(href=`/tracking/${o.id}`)= o.id
+          td= o.from
+          td= o.status
+          td= o.product
+          td= typesetDollars(o.cost)

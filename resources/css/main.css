@@ -1,0 +1,248 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background-color: white;
+    color: black;
+}
+
+.navbar {
+    background-color: black;
+    color: white;
+    width: 100%;
+}
+
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.logo {
+    font-family: 'Roboto Slab';
+    font-size: 1.8rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+}
+
+.nav-links a:hover {
+    background-color: #555;
+}
+
+.title {
+    text-align: center;
+    font-size: 180%;
+    font-family: 'Roboto';
+}
+
+.intro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.company-desc {
+    width: 40vw;
+    padding: 1rem;
+    background-color: white;
+    box-shadow: 0 2px 6px black;
+    border-radius: 10px;
+}
+
+.company-img img {
+    width: 40vw;
+    border-radius: 10px;
+    max-width: 500px;
+}
+
+
+strong {
+    color: red;
+}
+
+em {
+    color: rgb(153, 7, 166);
+}
+
+
+.member img {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 150px;
+    height: 150px;
+}
+
+.team {
+    padding: 2rem;
+    text-align: center;
+}
+
+.team-grid {
+    display: grid;
+    gap: 2rem;
+    margin-top: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.details-box {
+    margin: 1rem auto;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 2px 6px black;
+    padding: 1rem;
+}
+
+.orders-table {
+    width: 80%;
+    margin: 2rem auto;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.orders-table th {
+    background-color: black;
+    color: white;
+    padding: 0.8rem;
+}
+
+.orders-table td {
+    padding: 0.6rem;
+}
+
+.orders-table td a {
+    color: #ff6b6b;
+}
+
+.orders-table tr:nth-child(even) {
+    background-color: white;
+}
+
+.orders-table tr:nth-child(odd) {
+    background-color: black;
+    color: white;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    justify-content: center;
+    margin-top: .75rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    appearance: none;
+    border: 1.5px solid #000;
+    background: #000;
+    color: #fff;
+    padding: .55rem 1rem;
+    border-radius: 10px;
+    font-size: .95rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #111;
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn[disabled] {
+    opacity: .45;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.btn-outline {
+    background: #fff;
+    color: #000;
+}
+
+.btn-outline:hover {
+    background: #000;
+    color: #fff;
+}
+
+.update-box {
+    display: none;
+    margin-top: .75rem;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px black;
+}
+
+.details-box,
+.update-box {
+    flex: 1 1 50%;
+    min-width: 0;
+}
+
+.update-box textarea,
+.update-box input[type="text"],
+.update-box input[type="number"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: .5rem .6rem;
+    border: 1px solid #000;
+    border-radius: 8px;
+    background: #fff;
+    color: #000;
+}
+
+.update-box label {
+    font-weight: 600;
+}
+
+.update-box .row {
+    margin: .6rem 0;
+}
+
+.update-box .radios {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.tracking-wrap {
+    display: flex;
+    align-items: stretch;
+    gap: 24px;
+    margin: 24px auto;
+    max-width: 1100px;
+    padding: 0 16px;
+}
+
+.order-page {
+    width: 70%;
+    box-shadow: 0 2px 6px black;
+    margin: 1rem auto;
+    border-radius: 10px;
+    background-color: white;
+    padding: 1rem;
+    row-gap: 18px;
+}
+
+.order-page form {
+    line-height: 2.5;
+}
